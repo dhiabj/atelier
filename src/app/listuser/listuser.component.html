@@ -11,7 +11,7 @@
             #myInput
             placeholder="search users"
             class="input_search"
-            (input)="searchUsers(myInput.value)"
+            [(ngModel)]="categorie"
           />
         </div>
         <div class="table-responsive">
@@ -27,29 +27,35 @@
             </thead>
             <tbody>
               <tr *ngFor="let user of list">
-                <td>
-                  <img src="{{ user.picture }}" alt="" />
-                  <a href="#" class="user-link"
-                    >{{ user.firstName }} {{ user.lastName }}</a
-                  >
-                  <span class="user-subhead">{{ user.accountCategory }}</span>
-                </td>
-                <td>{{ user.birthDate }}</td>
-                <td class="text-center">
-                  <span class="label label-default">{{ user.profession }}</span>
-                </td>
-                <td>
-                  <a href="#">{{ user.email }}</a>
-                </td>
-                <td style="width: 20%">
-                  <Button
-                    class="btn btn-danger"
-                    (click)="deleteRow(user.idCustomer)"
-                    [disabled]="user.accountCategory == 'Admin'"
-                  >
-                    <i class="fa fa-trash-o"></i>
-                  </Button>
-                </td>
+                <div *ngIf="user.accountCategory == categorie">
+                  <td>
+                    <img src="{{ user.picture }}" alt="" />
+                    <a href="#" class="user-link"
+                      >{{ user.firstName }} {{ user.lastName }}</a
+                    >
+                    <span class="user-subhead">{{ user.accountCategory }}</span>
+                  </td>
+                  <td>{{ user.birthDate }}</td>
+                  <td class="text-center">
+                    <span class="label label-default">{{
+                      user.profession
+                    }}</span>
+                  </td>
+                  <td>
+                    <a href="#">{{ user.email }}</a>
+                  </td>
+                  <td style="width: 20%">
+                    <Button
+                      class="btn btn-danger"
+                      (click)="deleteRow(user.idCustomer)"
+                      [style.display]="
+                        user.accountCategory == 'Admin' ? 'none' : 'block'
+                      "
+                    >
+                      <i class="fa fa-trash-o"></i>
+                    </Button>
+                  </td>
+                </div>
               </tr>
             </tbody>
           </table>

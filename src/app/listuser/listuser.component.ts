@@ -65,6 +65,8 @@ export class ListuserComponent implements OnInit {
     }
     ];
 
+    categorie: string ="Customer";
+
     deleteRow(id:Number){
       for(let i = 0; i < this.list.length; ++i){
           if (this.list[i].idCustomer === id) {

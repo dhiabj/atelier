@@ -1,0 +1,41 @@
+<div class="search_box">
+  <input
+    #myInput
+    placeholder="search products"
+    class="input_search"
+    (input)="searchProducts(myInput.value)"
+  />
+</div>
+<div
+  class="card shadow-sm p-3 mb-3 bg-body rounded"
+  *ngFor="let produit of list"
+>
+  <div class="card-body">
+    <b>Produit : {{ produit.libelle }}</b>
+    <button
+      type="button"
+      class="btn btn-primary ms-3"
+      [disabled]="produit.tauxTVA == 0.02"
+      (click)="changeTVA(produit.idProduit)"
+    >
+      Ajuster TVA
+    </button>
+    <div *ngIf="produit.idProduit === pId">
+      <p style="color: red">{{ message }}</p>
+    </div>
+
+    <ul>
+      <li>identifiant: {{ produit.idProduit }}</li>
+      <li>Code: {{ produit.code }}</li>
+      <div *ngIf="produit.prixUnitaire <= 50; else templateName">
+        <li style="color: blue; font-size: 20px">
+          <i>Prix Unitaire: {{ produit.prixUnitaire }}</i>
+        </li>
+      </div>
+      <ng-template #templateName
+        ><li>Prix Unitaire: {{ produit.prixUnitaire }}</li></ng-template
+      >
+      <li>Taux TVA: {{ produit.tauxTVA }}</li>
+    </ul>
+  </div>
+</div>

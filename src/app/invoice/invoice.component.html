@@ -1,0 +1,10 @@
+<div *ngFor="let facture of list">
+  <div *ngIf="facture.idFacture == id && facture.active; else templateName">
+    <ul>
+      <li>Montant facture: {{ facture.montantFacture }}</li>
+      <li>Montant remise: {{ facture.montantRemise }}</li>
+      <li>Date facture: {{ facture.dateFacture }}</li>
+    </ul>
+  </div>
+  <ng-template #templateName></ng-template>
+</div>
