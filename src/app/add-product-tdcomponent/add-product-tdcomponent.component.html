@@ -1,0 +1,158 @@
+<form #form="ngForm">
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">Id Produit</label>
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput"
+      name="idproduit"
+      required
+      ngModel
+      #idproduit="ngModel"
+    />
+    <div *ngIf="idproduit.errors?.['required']">
+      <div class="alert alert-danger" role="alert">Id Produit obligatoire</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">Code</label>
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput2"
+      name="code"
+      required
+      pattern="[a-zA-Z-0-9]{8}"
+      ngModel
+      #code="ngModel"
+    />
+    <div *ngIf="code.errors?.['required']">
+      <div class="alert alert-danger" role="alert">Code obligatoire</div>
+    </div>
+    <div *ngIf="code.errors?.['pattern']">
+      <div class="alert alert-danger" role="alert">
+        Le code doit contenir 8 caractères
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput3" class="form-label">Libelle</label>
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput3"
+      name="libelle"
+      required
+      minlength="3"
+      ngModel
+      #libelle="ngModel"
+    />
+    <div *ngIf="libelle.errors?.['required']">
+      <div class="alert alert-danger" role="alert">Libelle obligatoire</div>
+    </div>
+    <div *ngIf="libelle.errors?.['minlength']">
+      <div class="alert alert-danger" role="alert">
+        le libelle doit contenir au moins 3 caractères
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput4" class="form-label">Prix unitaire</label>
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput4"
+      name="prix"
+      required
+      pattern="[1-9][0-9]*"
+      ngModel
+      #prix="ngModel"
+    />
+    <div *ngIf="prix.errors?.['required']">
+      <div class="alert alert-danger" role="alert">Prix obligatoire</div>
+    </div>
+    <div *ngIf="prix.errors?.['pattern']">
+      <div class="alert alert-danger" role="alert">
+        Le prix unitaire ne contient que des chiffres
+      </div>
+    </div>
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary mb-3"
+    [hidden]="form.valid"
+    [disabled]="form.invalid"
+  >
+    Suivant
+  </button>
+</form>
+
+<div [hidden]="form.invalid">
+  <form #form2="ngForm">
+    <div class="mb-3">
+      <label for="formGroupExampleInput5" class="form-label"
+        >Id détails produit</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput5"
+        name="iddetails"
+        required
+        ngModel
+        #iddetails="ngModel"
+      />
+      <div *ngIf="iddetails.errors?.['required']">
+        <div class="alert alert-danger" role="alert">
+          Id détails produit obligatoire
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput6" class="form-label"
+        >Date création</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput6"
+        name="datecreation"
+        required
+        ngModel
+        #datecreation="ngModel"
+      />
+      <div *ngIf="datecreation.errors?.['required']">
+        <div class="alert alert-danger" role="alert">
+          Date création obligatoire
+        </div>
+      </div>
+    </div>
+    <div class="mb-3" [hidden]="datecreation.invalid">
+      <label for="formGroupExampleInput7" class="form-label"
+        >Date derniére modification</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput7"
+        name="datedmodification"
+        required
+        ngModel
+        #datedmodification="ngModel"
+      />
+      <div *ngIf="datedmodification.errors?.['required']">
+        <div class="alert alert-danger" role="alert">
+          Date derniére modification obligatoire
+        </div>
+      </div>
+    </div>
+    <select class="form-select mb-3" aria-label="Default select example">
+      <option selected value="electromenager">Electromenager</option>
+      <option value="alimentaire">Alimentaire</option>
+      <option value="quincaillerie">Quincaillerie</option>
+    </select>
+    <button type="submit" class="btn btn-primary mb-3" [hidden]="form2.invalid">
+      Ajouter
+    </button>
+  </form>
+</div>

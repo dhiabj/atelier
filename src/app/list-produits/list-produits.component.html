@@ -6,6 +6,13 @@
     (input)="searchProducts(myInput.value)"
   />
 </div>
+<button
+  type="button"
+  class="btn btn-primary ms-4 mb-3"
+  routerLink="/addProduct"
+>
+  Ajouter Produit
+</button>
 <div
   class="card shadow-sm p-3 mb-3 bg-body rounded"
   *ngFor="let produit of list"

@@ -14,6 +14,7 @@ import { InvoiceComponent } from './invoice/invoice.component';
 import { InvoiceModule } from './invoice/invoice.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TestComponent } from './test/test.component';
+import { AddProductTDComponentComponent } from './add-product-tdcomponent/add-product-tdcomponent.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TestComponent } from './test/test.component';
     ListuserComponent,
     ListProduitsComponent,
     NotFoundComponent,
+    AddProductTDComponentComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
@@ -35,6 +37,7 @@ import { TestComponent } from './test/test.component';
     ListuserComponent,
     ListProduitsComponent,
     InvoiceListComponent,
+    AddProductTDComponentComponent,
   ],
 })
 export class AppModule {}

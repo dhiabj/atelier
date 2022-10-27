@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddProductTDComponentComponent } from './add-product-tdcomponent/add-product-tdcomponent.component';
 import { InvoiceListComponent } from './invoice-list/invoice-list.component';
 import { MainInvoiceComponent } from './invoice/main-invoice/main-invoice.component';
 import { ListProduitsComponent } from './list-produits/list-produits.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   },
   { path: 'user', component: ListuserComponent },
   { path: 'products', component: ListProduitsComponent },
+  { path: 'addProduct', component: AddProductTDComponentComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
